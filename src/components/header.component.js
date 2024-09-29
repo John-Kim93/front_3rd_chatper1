@@ -8,11 +8,11 @@ export default function Header(curPage) {
 
   const hydratePage = () => {
     if (curPage === "HOME") {
-      document.querySelector("#home").classList.add("text-blue-600");
-      document.querySelector("#profile").classList.add("text-gray-600");
+      document.getElementById("home").classList.add("text-blue-600");
+      document.getElementById("profile").classList.add("text-gray-600");
     } else if (curPage === "PROFILE") {
-      document.querySelector("#home").classList.add("text-gray-600");
-      document.querySelector("#profile").classList.add("text-blue-600");
+      document.getElementById("home").classList.add("text-gray-600");
+      document.getElementById("profile").classList.add("text-blue-600");
     }
 
     router.activateLink("home", "/");

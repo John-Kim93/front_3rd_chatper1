@@ -11,12 +11,12 @@ export default function Login() {
 
   const initHTML = () => {
     router.metadataInit("로그인");
-    document.querySelector("#root").innerHTML = html;
+    document.getElementById("root").innerHTML = html;
   };
 
   const hydratePage = () => {
     // form 활성화
-    document.querySelector("#login-form").addEventListener("submit", () => {
+    document.getElementById("login-form").addEventListener("submit", () => {
       // validation : TC 통과를 위해 주석 처리
       // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const usernameInput = document.getElementById("username");
@@ -52,7 +52,7 @@ export default function Login() {
     router.activateErrorBoundary("root");
 
     // 에러 바운더리 테스트
-    // const $username = document.querySelector("#username");
+    // const $username = document.getElementById("username");
     // $username.addEventListener(
     //   "input",
     //   () => {

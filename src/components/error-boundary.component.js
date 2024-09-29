@@ -3,9 +3,9 @@ import { router } from "../router/router";
 export default function ErrorBoundary(targetId, error) {
   const initHTML = () => {
     router.metadataInit("에러 바운더리");
-    document.querySelector(`#${targetId}`).innerHTML = html;
-    document.querySelector(
-      `#message`
+    document.getElementById(targetId).innerHTML = html;
+    document.getElementById(
+      "message"
     ).innerHTML = `<div>${error.message}</div>`;
   };
 

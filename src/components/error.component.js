@@ -3,7 +3,7 @@ import { router } from "../router/router";
 export default function Error() {
   const initHTML = () => {
     router.metadataInit("오류");
-    document.querySelector("#root").innerHTML = html;
+    document.getElementById("root").innerHTML = html;
   };
 
   const hydratePage = () => {

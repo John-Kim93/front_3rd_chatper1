@@ -3,7 +3,7 @@ import { router } from "../router/router";
 export default function Home() {
   const initHTML = () => {
     router.metadataInit("홈");
-    document.querySelector("#content").innerHTML = html;
+    document.getElementById("content").innerHTML = html;
   };
 
   initHTML();

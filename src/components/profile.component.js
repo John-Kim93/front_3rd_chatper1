@@ -4,13 +4,13 @@ import { router } from "../router/router";
 export default function Profile() {
   const initHTML = () => {
     router.metadataInit("프로필");
-    document.querySelector("#content").innerHTML = html;
+    document.getElementById("content").innerHTML = html;
   };
 
   const hydratePage = () => {
     // 전역 상태 적용 버튼 활성화
     document
-      .querySelector("#global-state-button")
+      .getElementById("global-state-button")
       .addEventListener("click", (event) => {
         event.preventDefault();
         user.set({
