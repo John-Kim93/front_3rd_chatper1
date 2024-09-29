@@ -6,30 +6,12 @@ import Home from "../components/home.component";
 import Login from "../components/login.component";
 import Profile from "../components/profile.component";
 import { isNullorUndefined } from "../util";
-import {
-  error,
-  login,
-  home,
-  profile,
-  metadata,
-  footer,
-  header,
-  bodyLayout,
-  errorBoundary,
-} from "./html";
+import { metadata, bodyLayout } from "./html";
 
 class Router {
   constructor() {
     this.routes = {};
-    this.templates = {
-      HOME: home,
-      PROFILE: profile,
-      LOGIN: login,
-      ERROR: error,
-      FOOTER: footer,
-      HEADER: header,
-      ERROR_BOUNDARY: errorBoundary,
-    };
+
     window.addEventListener("popstate", this.handlePopState.bind(this));
   }
 

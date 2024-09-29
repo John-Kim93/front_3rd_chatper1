@@ -1,13 +1,15 @@
-import { router } from "../router/router";
-
 export default function Footer() {
-  const templateName = "FOOTER";
-
   const initHTML = () => {
-    // html 페이지 주입
-    const html = router.templates[templateName];
     document.querySelector("footer").innerHTML = html;
   };
 
   initHTML();
 }
+
+const html = `
+  <div class="max-w-md w-full">
+    <footer class="bg-gray-200 p-4 text-center">
+      <p>&copy; 2024 항해플러스. All rights reserved.</p>
+    </footer>
+  </div>
+`;
