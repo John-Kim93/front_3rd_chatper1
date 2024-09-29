@@ -1,17 +1,12 @@
-import { router } from "../router/router";
+import { activateLink } from "../main";
 
-export default function Error() {
-  const initHTML = () => {
-    router.metadataInit("오류");
-    document.getElementById("root").innerHTML = html;
+export default function NotFound() {
+  return {
+    componentName: "NOT_FOUND",
+    targetId: "root",
+    html,
+    handlers: [activateLink("home", "/")],
   };
-
-  const hydratePage = () => {
-    router.activateLink("home", "/");
-  };
-
-  initHTML();
-  hydratePage();
 }
 
 const html = `

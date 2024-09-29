@@ -1,70 +1,49 @@
-import { user } from "../main";
-import { router } from "../router/router";
+import { setForm, user } from "../main";
 
 export default function Profile() {
-  const initHTML = () => {
-    router.metadataInit("프로필");
-    document.getElementById("content").innerHTML = html;
-  };
-
-  const hydratePage = () => {
-    // 전역 상태 적용 버튼 활성화
-    document
-      .getElementById("global-state-button")
-      .addEventListener("click", (event) => {
-        event.preventDefault();
-        user.set({
-          username: "손흥민",
-          email: "봉준호",
-          bio: "김종현 let's go",
-        });
-      });
-
-    // form 활성화
-    const profileForm = document.getElementById("profile-form");
-    profileForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      const usernameInput = document.getElementById("username");
-      const emailInput = document.getElementById("email");
-      const bioInput = document.getElementById("bio");
-      const userInfo = {
-        username: usernameInput.value,
-        email: emailInput.value,
-        bio: bioInput.value,
-      };
-      localStorage.setItem("user", JSON.stringify(userInfo));
-      router.navigateTo("/");
-    });
-  };
-
   // 전역 변수 구독
   const subscribe = () => {
     user.subscribe(() => {
       initHTML();
       initForm();
       hydratePage();
-      setForm(user.get());
+      initForm(user.get());
     });
   };
 
   const initForm = () => {
-    setForm(JSON.parse(localStorage.getItem("user")));
-  };
-
-  const setForm = ({ username, email, bio }) => {
     const usernameInput = document.getElementById("username");
     const emailInput = document.getElementById("email");
     const bioInput = document.getElementById("bio");
+
+    const { username, email, bio } = JSON.parse(localStorage.getItem("user"));
+
     usernameInput.value = username ?? "";
     emailInput.value = email ?? "";
     bioInput.value = bio ?? "";
   };
 
-  initHTML();
-  initForm();
-  hydratePage();
-  subscribe();
+  const submitForm = () => {
+    const usernameInput = document.getElementById("username");
+    const emailInput = document.getElementById("email");
+    const bioInput = document.getElementById("bio");
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        username: usernameInput.value,
+        email: emailInput.value,
+        bio: bioInput.value,
+      })
+    );
+  };
+
+  return {
+    componentName: "PROFILE",
+    targetId: "content",
+    html,
+    handlers: [initForm, () => setForm("profile-form", "/", [submitForm])],
+  };
 }
 
 export const html = `

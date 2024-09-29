@@ -1,20 +1,18 @@
-import { router } from "../router/router";
+import { activateLink } from "../main";
 
-export default function ErrorBoundary(targetId, error) {
-  const initHTML = () => {
-    router.metadataInit("에러 바운더리");
-    document.getElementById(targetId).innerHTML = html;
+export default function ErrorBoundary(error) {
+  const initErrMsg = () => {
     document.getElementById(
       "message"
     ).innerHTML = `<div>${error.message}</div>`;
   };
 
-  const hydratePage = () => {
-    router.activateLink("home", "/");
+  return {
+    componentName: "ERROR_BOUNDARY",
+    targetId: "root",
+    html,
+    handlers: [initErrMsg, activateLink("home", "/")],
   };
-
-  initHTML();
-  hydratePage();
 }
 
 const html = `

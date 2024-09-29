@@ -1,12 +1,10 @@
-import { router } from "../router/router";
-
 export default function Home() {
-  const initHTML = () => {
-    router.metadataInit("홈");
-    document.getElementById("content").innerHTML = html;
+  return {
+    componentName: "HOME",
+    targetId: "content",
+    html,
+    handlers: [],
   };
-
-  initHTML();
 }
 
 const html = `

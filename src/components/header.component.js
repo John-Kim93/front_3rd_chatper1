@@ -1,27 +1,5 @@
-import { router } from "../router/router";
-
-export default function Header(curPage) {
-  const initHTML = () => {
-    router.bodyLayoutInit();
-    document.querySelector("header").innerHTML = html;
-  };
-
-  const hydratePage = () => {
-    if (curPage === "HOME") {
-      document.getElementById("home").classList.add("text-blue-600");
-      document.getElementById("profile").classList.add("text-gray-600");
-    } else if (curPage === "PROFILE") {
-      document.getElementById("home").classList.add("text-gray-600");
-      document.getElementById("profile").classList.add("text-blue-600");
-    }
-
-    router.activateLink("home", "/");
-    router.activateLink("profile", "/profile");
-    router.activateLogout();
-  };
-
-  initHTML();
-  hydratePage();
+export default function Header() {
+  return html;
 }
 
 const html = `

@@ -1,9 +1,5 @@
 export default function Footer() {
-  const initHTML = () => {
-    document.querySelector("footer").innerHTML = html;
-  };
-
-  initHTML();
+  return html;
 }
 
 const html = `
