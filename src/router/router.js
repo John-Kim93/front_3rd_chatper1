@@ -46,7 +46,7 @@ class Router {
   }
 
   activateLink(targetId, path) {
-    document.getElementById("root").addEventListener("click", (event) => {
+    document.querySelector("body").addEventListener("click", (event) => {
       if (event.target.type === "submit") return;
       event.preventDefault();
       if (event.target.id === targetId) {
