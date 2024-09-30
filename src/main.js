@@ -8,7 +8,7 @@ import Profile from "./components/profile.component.js";
 import { bodyLayout, metadata } from "./router/html.js";
 import { Router } from "./router/router.js";
 import User from "./store/user.js";
-import { isNullorUndefined } from "./util.js";
+import { isNullish } from "./util.js";
 
 export const user = new User();
 
@@ -57,7 +57,7 @@ function initBodyLayout(componentName) {
   document.querySelector("body").addEventListener("click", (event) => {
     if (event.target.id !== "logout") return;
     event.preventDefault();
-    if (!isNullorUndefined(localStorage.getItem("user"))) {
+    if (!isNullish(user.getStateFromLocalStorage())) {
       localStorage.clear();
     }
     router.navigateTo("/login");
@@ -83,7 +83,7 @@ function render({ componentName, targetId, html, handlers }) {
 }
 
 function checkLogin() {
-  const isLogin = !isNullorUndefined(localStorage.getItem("user"));
+  const isLogin = !isNullish(user.getStateFromLocalStorage);
   return isLogin;
 }
 

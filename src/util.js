@@ -1,4 +1,4 @@
-export function isNullorUndefined(value) {
+export function isNullish(value) {
   if (value === null || value === undefined) return true;
   return false;
 }
