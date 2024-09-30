@@ -83,7 +83,7 @@ function render({ componentName, targetId, html, handlers }) {
 }
 
 function checkLogin() {
-  const isLogin = !isNullish(user.getStateFromLocalStorage);
+  const isLogin = !isNullish(user.getStateFromLocalStorage());
   return isLogin;
 }
 

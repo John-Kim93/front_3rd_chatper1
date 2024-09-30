@@ -13,16 +13,23 @@ export default class User {
     this.subscribers.push(component);
   }
 
-  set(data) {
+  setState(data) {
     if (typeof data === "function") {
-      this.state = data(state);
+      const reqState = data(state);
+      this.state = reqState;
+      localStorage.setItem("user", JSON.stringify(reqState));
     } else {
       this.state = data;
+      localStorage.setItem("user", JSON.stringify(data));
     }
     this.subscribers.forEach((reRender) => reRender());
   }
 
-  get() {
+  getState() {
     return this.state;
+  }
+
+  getStateFromLocalStorage() {
+    return JSON.parse(localStorage.getItem("user"));
   }
 }

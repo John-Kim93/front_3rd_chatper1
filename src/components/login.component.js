@@ -1,4 +1,4 @@
-import { setForm } from "../main";
+import { setForm, user } from "../main";
 
 export default function Login() {
   function submitForm() {
@@ -21,15 +21,7 @@ export default function Login() {
     // } else {
     //   document.getElementById("pw-error").innerText = null;
     // }
-
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        username: usernameInput.value,
-        email: "",
-        bio: "",
-      })
-    );
+    user.setState({ username: usernameInput.value, email: "", bio: "" });
   }
 
   // 에러 바운더리 테스트

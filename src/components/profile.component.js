@@ -1,26 +1,22 @@
 import { setForm, user } from "../main";
 
 export default function Profile() {
-  // 전역 변수 구독
-  const subscribe = () => {
-    user.subscribe(() => {
-      initHTML();
-      initForm();
-      hydratePage();
-      initForm(user.get());
-    });
-  };
+  user.subscribe(Profile);
 
   const initForm = () => {
     const usernameInput = document.getElementById("username");
     const emailInput = document.getElementById("email");
     const bioInput = document.getElementById("bio");
 
-    const { username, email, bio } = JSON.parse(localStorage.getItem("user"));
+    const { username, email, bio } = user.getStateFromLocalStorage() ?? {
+      username: "",
+      email: "",
+      bio: "",
+    };
 
-    usernameInput.value = username ?? "";
-    emailInput.value = email ?? "";
-    bioInput.value = bio ?? "";
+    usernameInput.value = username;
+    emailInput.value = email;
+    bioInput.value = bio;
   };
 
   const submitForm = () => {
